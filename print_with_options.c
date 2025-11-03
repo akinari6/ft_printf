@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:23:21 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:02:54 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:24:53 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int	print_string(t_segment *segment, bool is_bonus)
 
 int	print_pointer(t_segment *segment, bool is_bonus)
 {
-	char *s;
-	int length;
+	char	*s;
+	int		length;
 
 	s = pointer_to_hex(segment->value.ptr);
 	if (s != NULL && !is_bonus)
 	{
-        length = write_and_count_str("0x");
+		length = write_and_count_str("0x");
 		length += write_and_count_str(s);
 		free(s);
 		return (length);

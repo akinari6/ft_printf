@@ -6,57 +6,57 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:21:26 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 14:04:15 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:24:12 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char *apply_precision(char *s, int precision)
+static char	*apply_precision(char *s, int precision)
 {
-	int s_len;
-	char *new;
+	int		s_len;
+	char	*new;
 
 	s_len = ft_strlen(s);
 	if (precision >= s_len)
-		return s;
+		return (s);
 	new = malloc(precision + 1);
 	if (new == NULL)
-		return NULL;
+		return (NULL);
 	ft_strlcpy(new, s, precision + 1);
 	free(s);
-	return new;
+	return (new);
 }
 
-static char *apply_width(char *s, t_options opts)
+static char	*apply_width(char *s, t_options opts)
 {
-    char *new;
-    int s_len;
-    int i;
+	char	*new;
+	int		s_len;
+	int		i;
 
-    s_len = ft_strlen(s);
-    if (s_len >= opts.width)
-        return s;
-    new = malloc(opts.width + 1);
-    if (opts.flag_minus)
-    {
-        ft_strlcpy(new, s, opts.width + 1);
-        ft_memset(new + s_len, ' ', opts.width - s_len);
-    }
+	s_len = ft_strlen(s);
+	if (s_len >= opts.width)
+		return (s);
+	new = malloc(opts.width + 1);
+	if (opts.flag_minus)
+	{
+		ft_strlcpy(new, s, opts.width + 1);
+		ft_memset(new + s_len, ' ', opts.width - s_len);
+	}
 	else
 	{
 		ft_memset(new, ' ', opts.width - s_len);
-        new[opts.width - s_len] = '\0';
-        ft_strlcat(new, s, opts.width);
+		new[opts.width - s_len] = '\0';
+		ft_strlcat(new, s, opts.width);
 	}
-    new[opts.width] = '\0';
-    free(s);
-    return new;
+	new[opts.width] = '\0';
+	free(s);
+	return (new);
 }
 
 char	*format_string(t_segment *segment)
 {
-	char *s;
+	char	*s;
 
 	segment->opts.flag_zero = false;
 	s = ft_strdup(segment->value.s);

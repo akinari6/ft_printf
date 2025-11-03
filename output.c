@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 21:35:30 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 15:46:15 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:26:08 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,6 @@ static int	print_segment_content(t_segment *segment, bool is_bonus)
 		return (print_string(segment, is_bonus));
 	else if (type == TYPE_POINTER)
 		return (print_pointer(segment, is_bonus));
-	// if (segment->seg_type == SEG_TEXT)
-	// 	ft_putstr_fd(segment->content, STDOUT_FILENO);
-	// else if (type == TYPE_CHAR)
-	// 	ft_putchar_fd(segment->value.c, STDOUT_FILENO);
-	// else if (type == TYPE_POINTER)
-	// 	ft_putpointer_fd(segment->value.ptr, STDOUT_FILENO);
-	// else if (type == TYPE_INT || type == TYPE_UINT)
-	// 	ft_putnbr_fd(segment->value.i, STDOUT_FILENO);
-	// else if (type == TYPE_HEX_LOWER)
-	// 	ft_puthex_fd(segment->value.i, STDOUT_FILENO);
-	// else if (type == TYPE_HEX_UPPER)
-	//     ft_puthex_fd(segment->value.i, STDOUT_FILENO);
-	// else if (type == TYPE_PERCENT)
-	// 	ft_putchar_fd(segment->value.c, STDOUT_FILENO);
 	return (0);
 }
 

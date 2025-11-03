@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:48:16 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:01:45 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:24:24 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	calc_buffer_size_i(int number)
 // 		length++;
 // 	return (length);
 // }
-
 
 // size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 // {

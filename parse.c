@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 18:35:31 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 12:17:01 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:25:55 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ t_list	*parse(char const *format, va_list ap)
 	free(segment_strs);
 	return (segment_list);
 }
-

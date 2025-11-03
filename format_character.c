@@ -6,36 +6,36 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:21:26 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 14:04:45 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:23:54 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char *apply_width(char *s, t_options opts)
+static char	*apply_width(char *s, t_options opts)
 {
-    char *new;
-    int s_len;
-    int i;
+	char	*new;
+	int		s_len;
+	int		i;
 
-    s_len = ft_strlen(s);
-    if (s_len >= opts.width)
-        return s;
-    new = malloc(opts.width + 1);
-    if (opts.flag_minus)
-    {
-        ft_strlcpy(new, s, opts.width + 1);
-        ft_memset(new + s_len, ' ', opts.width - s_len);
-    }
-    else
+	s_len = ft_strlen(s);
+	if (s_len >= opts.width)
+		return (s);
+	new = malloc(opts.width + 1);
+	if (opts.flag_minus)
+	{
+		ft_strlcpy(new, s, opts.width + 1);
+		ft_memset(new + s_len, ' ', opts.width - s_len);
+	}
+	else
 	{
 		ft_memset(new, ' ', opts.width - s_len);
-        new[opts.width - s_len] = '\0';
-        ft_strlcat(new, s, opts.width);
+		new[opts.width - s_len] = '\0';
+		ft_strlcat(new, s, opts.width);
 	}
-    new[opts.width] = '\0';
-    free(s);
-    return new;
+	new[opts.width] = '\0';
+	free(s);
+	return (new);
 }
 
 char	*format_character(t_segment *segment)

@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:00:45 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/10/30 20:37:56 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:27:51 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ static char	*extract_segment(const char *format, int *idx)
 	}
 	else
 	{
-		while (format[*idx + length] != '\0' && format[*idx
-			+ length] != PERCENT)
+		while (format[*idx + length] != '\0'
+			&& format[*idx + length] != PERCENT)
 			length++;
 	}
 	segment = malloc(length + 1);
