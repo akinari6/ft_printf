@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 21:35:30 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 13:56:33 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 15:46:15 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static int	print_segment_content(t_segment *segment, bool is_bonus)
 		return (write_and_count_char(segment->value.c));
 	else if (type == TYPE_STRING)
 		return (print_string(segment, is_bonus));
+	else if (type == TYPE_POINTER)
+		return (print_pointer(segment, is_bonus));
 	// if (segment->seg_type == SEG_TEXT)
 	// 	ft_putstr_fd(segment->content, STDOUT_FILENO);
 	// else if (type == TYPE_CHAR)

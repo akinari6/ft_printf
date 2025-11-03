@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:02:00 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 14:04:26 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:17:41 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int ft_printf(const char *format, ...)
 
 int main()
 {
-    int a = ft_printf("abcd%-0+# 10.20c123%10.4sABC%p+++%d@@@%%\n", 'F', "|||||", "address", 42);
+    int a = ft_printf("abcd|%-0+# 10.20c|123|%10.4s|ABC|%30p|+++|%d|@@@|%%|\n", 'F', "?????", "address", 42);
     printf("%d\n", a);
 }
 // abcd123ABC+++@@@

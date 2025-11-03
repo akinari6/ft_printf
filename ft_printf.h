@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:42 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 13:53:02 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 15:46:02 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int						print_character(t_segment *segment, bool is_bonus);
 char					*format_character(t_segment *segment);
 int						print_string(t_segment *segment, bool is_bonus);
 char					*format_string(t_segment *segment);
+int						print_pointer(t_segment *segment, bool is_bonus);
+char					*format_pointer(char *s, t_options opts);
 
 // free
 void					free_segment(void *segment_ptr);
@@ -106,8 +108,13 @@ void					free_segment(void *segment_ptr);
 size_t					ft_strlen(const char *s);
 size_t					ft_strlcat(char *dst, const char *src, size_t size);
 size_t					ft_strlcpy(char *dst, const char *src, size_t size);
+char					*ft_strjoin(char const *s1, char const *s2);
 char					*ft_strdup(const char *s);
 int						ft_atoi(const char *nptr);
+
+// convert
+char					*pointer_to_hex(void *ptr);
+char					*decimal_to_hex(int number);
 
 // memory
 void					*ft_memset(void *s, int c, size_t n);

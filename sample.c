@@ -107,5 +107,8 @@
 //     sum += printf("|% 3.1s|\n", "abc");
 
 //     printf("NULL : %d\n",  printf("%s\n", NULL));
+
+//     printf("|%0-+20p|\n", "abc");
+//     printf("|%0 +20p|\n", "abc");
 //     return 0;
 // }
