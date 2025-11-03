@@ -6,19 +6,21 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 21:35:30 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 11:40:03 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 12:48:29 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	print_segment_content(t_segment *segment)
+static int	print_segment_content(t_segment *segment, bool is_bonus)
 {
 	t_format_type	type;
 
 	type = segment->fmt_type;
 	if (segment->seg_type == SEG_TEXT)
 		return (write_and_count_str(segment->content));
+	else if (type == TYPE_CHAR)
+		return (print_character(segment, is_bonus));
 	// if (segment->seg_type == SEG_TEXT)
 	// 	ft_putstr_fd(segment->content, STDOUT_FILENO);
 	// else if (type == TYPE_CHAR)
@@ -36,7 +38,7 @@ static int	print_segment_content(t_segment *segment)
 	return 0;
 }
 
-int	output(t_list *segment_list)
+int	output(t_list *segment_list, bool is_bonus)
 {
 	int			total;
 	t_list		*node;
@@ -47,7 +49,7 @@ int	output(t_list *segment_list)
 	while (node != NULL)
 	{
 		segment = node->content;
-		total += print_segment_content(segment);
+		total += print_segment_content(segment, is_bonus);
 		node = node->next;
 	}
 	return (total);

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 11:21:26 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 13:25:34 by aktsuji          ###   ########.fr       */
+/*   Created: 2025/10/18 17:05:52 by aktsuji           #+#    #+#             */
+/*   Updated: 2025/11/03 13:15:10 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *format_character(t_segment *segment)
+void	*ft_memset(void *s, int c, size_t n)
 {
-    char *s;
-    t_options opts;
+	unsigned char	*ucs;
+	unsigned char	uc;
+	size_t			i;
 
-    s = malloc(2);
-    if (s == NULL)
-        return NULL;
-    s[0] = segment->value.c;
-    s[1] = '\0';
-    segment->opts.flag_zero = false;
-    opts = segment->opts;
-    if (opts.width > 0)
-        s = apply_width(s, segment->opts);
-    return s;
+	ucs = (unsigned char *)s;
+	uc = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		ucs[i] = uc;
+		i++;
+	}
+	return (s);
 }

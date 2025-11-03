@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:42 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 12:41:30 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 13:28:27 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,30 @@ t_list					*parse_var_args(t_list *segment_list, va_list ap);
 void					parse_options(void *segment_ptr);
 
 // output
-int						output(t_list *segment_list);
+int						output(t_list *segment_list, bool is_bonus);
 int						write_and_count_str(char *str);
 int						write_and_count_char(char c);
+
 int						print_text(char *str);
 int						print_percent(void);
+
+int						print_character(t_segment *segment, bool is_bonus);
+char					*format_character(t_segment *segment);
+
+// apply
+char					*apply_width(char *s, t_options opts);
 
 // free
 void					free_segment(void *segment_ptr);
 
 // string
 size_t					ft_strlen(const char *s);
+size_t					ft_strlcat(char *dst, const char *src, size_t size);
 size_t					ft_strlcpy(char *dst, const char *src, size_t size);
 int						ft_atoi(const char *nptr);
+
+// memory
+void					*ft_memset(void *s, int c, size_t n);
 
 // char type
 int						ft_isdigit(int c);
