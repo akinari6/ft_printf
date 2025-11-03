@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 18:35:31 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/02 14:50:51 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 12:17:01 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ t_list	*parse(char const *format, va_list ap)
 	segment_list = create_list(segment_strs);
 	if (segment_list == NULL)
 		return (free_segment_strs(segment_strs));
-	parse_var_args(segment_list, ap); // todo: optionsの取得
+	parse_var_args(segment_list, ap);
+	ft_lstiter(segment_list, parse_options);
 	free(segment_strs);
 	return (segment_list);
 }
+

@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:42 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 11:33:03 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 12:06:31 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_list					*parse(char const *format, va_list ap);
 char					**split_format_to_segments(const char *format);
 t_list					*create_list(char **segments);
 t_list					*parse_var_args(t_list *segment_list, va_list ap);
+void					parse_options(void *segment_ptr);
 
 // output
 int						output(t_list *segment_list);
@@ -95,6 +96,10 @@ int						print_percent(void);
 // string
 size_t					ft_strlen(const char *s);
 size_t					ft_strlcpy(char *dst, const char *src, size_t size);
+int						ft_atoi(const char *nptr);
+
+// char type
+int						ft_isdigit(int c);
 
 // put
 void					ft_putchar_fd(char c, int fd);
