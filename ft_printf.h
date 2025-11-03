@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:42 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/10/30 21:46:33 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 11:33:03 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,32 @@ typedef struct s_list
 	struct s_list		*next;
 }						t_list;
 
+// printf
 int						ft_printf(const char *format, ...);
 
+// parse
 t_list					*parse(char const *format, va_list ap);
 char					**split_format_to_segments(const char *format);
 t_list					*create_list(char **segments);
 t_list					*parse_var_args(t_list *segment_list, va_list ap);
 
-void					output(t_list *segment_list);
+// output
+int						output(t_list *segment_list);
+int						write_and_count_str(char *str);
+int						write_and_count_char(char c);
+int						print_text(char *str);
+int						print_percent(void);
 
+// string
 size_t					ft_strlen(const char *s);
 size_t					ft_strlcpy(char *dst, const char *src, size_t size);
 
+// put
 void					ft_putchar_fd(char c, int fd);
 void					ft_putstr_fd(char *s, int fd);
 void					ft_putnbr_fd(int n, int fd);
 
+// list
 t_list					*ft_lstnew(void *content);
 void					ft_lstadd_front(t_list **lst, t_list *new);
 int						ft_lstsize(t_list *lst);

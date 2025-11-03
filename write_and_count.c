@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   write_and_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/26 17:02:00 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 11:37:39 by aktsuji          ###   ########.fr       */
+/*   Created: 2025/11/03 11:26:40 by aktsuji           #+#    #+#             */
+/*   Updated: 2025/11/03 11:27:58 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int write_and_count_str(char* str)
 {
-    va_list ap;
-    t_list *segment_list;
-    int total_length;
+    int length;
 
-    va_start(ap, format);
-    segment_list = parse(format, ap);
-    total_length = output(segment_list);
-    va_end(ap);
-    return total_length;
+    length = ft_strlen(str);
+    ft_putstr_fd(str, STDOUT_FILENO);
+    return length;
 }
 
-int main()
+int write_and_count_char(char c)
 {
-    int a = ft_printf("abcd%c123%sABC%p+++%d@@@%%", 'F', "|||||", "address", 42);
-    printf("%d\n", a);
+    ft_putchar_fd(c, STDOUT_FILENO);
+    return 1;
 }
-// abcd123ABC+++@@@

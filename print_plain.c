@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   print_plain.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/26 17:02:00 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 11:37:39 by aktsuji          ###   ########.fr       */
+/*   Created: 2025/11/03 11:31:17 by aktsuji           #+#    #+#             */
+/*   Updated: 2025/11/03 11:33:09 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int print_text(char *str)
 {
-    va_list ap;
-    t_list *segment_list;
-    int total_length;
-
-    va_start(ap, format);
-    segment_list = parse(format, ap);
-    total_length = output(segment_list);
-    va_end(ap);
-    return total_length;
+    return write_and_count_str(str);
 }
 
-int main()
+int print_percent()
 {
-    int a = ft_printf("abcd%c123%sABC%p+++%d@@@%%", 'F', "|||||", "address", 42);
-    printf("%d\n", a);
+    return write_and_count_char('%');
 }
-// abcd123ABC+++@@@
