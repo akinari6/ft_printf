@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:02:00 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 13:30:52 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 14:04:26 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int ft_printf(const char *format, ...)
     va_start(ap, format);
     segment_list = parse(format, ap);
     // ft_lstiter(segment_list, print_full_segment); // for debug
-    total_length = output(segment_list, false);
+    total_length = output(segment_list, true);
     ft_lstclear(&segment_list, free_segment);
     va_end(ap);
     return total_length;
@@ -91,7 +91,7 @@ int ft_printf(const char *format, ...)
 
 int main()
 {
-    int a = ft_printf("abcd%-0+# 10.20c123%sABC%p+++%d@@@%%\n", 'F', "|||||", "address", 42);
+    int a = ft_printf("abcd%-0+# 10.20c123%10.4sABC%p+++%d@@@%%\n", 'F', "|||||", "address", 42);
     printf("%d\n", a);
 }
 // abcd123ABC+++@@@

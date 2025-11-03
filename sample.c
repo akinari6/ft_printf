@@ -62,7 +62,7 @@
 //     sum += printf("0:|%-10u|\n", num);
 //     sum += printf("1:|%4u|\n", num);
 //     sum += printf("2:|%010u|\n", num);
-//     sum += printf("3:|%10.4u|\n", num);
+//     sum += printf("!!!3:|%10.4u|\n", num);
 //     sum += printf("4:|%10.8u|\n", num);
 //     sum += printf("5:|%#10u|\n", num);
 //     sum += printf("6:|% 6u|\n", num);
@@ -100,5 +100,12 @@
 
 
 //     sum += printf("|%0-10d|\n", 12345);
+
+
+//     sum += printf("|%-10s|\n", "abc");
+//     sum += printf("|%-3.1s|\n", "abc");
+//     sum += printf("|% 3.1s|\n", "abc");
+
+//     printf("NULL : %d\n",  printf("%s\n", NULL));
 //     return 0;
 // }

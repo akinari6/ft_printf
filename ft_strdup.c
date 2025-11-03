@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 11:21:26 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 13:25:34 by aktsuji          ###   ########.fr       */
+/*   Created: 2025/10/19 18:48:48 by aktsuji           #+#    #+#             */
+/*   Updated: 2025/11/03 13:49:16 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *format_character(t_segment *segment)
+char	*ft_strdup(const char *s)
 {
-    char *s;
-    t_options opts;
+	char	*duplicated_str;
+	size_t	duplicate_size;
 
-    s = malloc(2);
-    if (s == NULL)
-        return NULL;
-    s[0] = segment->value.c;
-    s[1] = '\0';
-    segment->opts.flag_zero = false;
-    opts = segment->opts;
-    if (opts.width > 0)
-        s = apply_width(s, segment->opts);
-    return s;
+	duplicate_size = ft_strlen(s) + 1;
+	duplicated_str = (char *)malloc(duplicate_size);
+	if (duplicated_str == NULL)
+		return (NULL);
+	ft_strlcpy(duplicated_str, s, duplicate_size);
+	return (duplicated_str);
 }

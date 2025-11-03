@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:42 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 13:28:27 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 13:53:02 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,8 @@ int						print_percent(void);
 
 int						print_character(t_segment *segment, bool is_bonus);
 char					*format_character(t_segment *segment);
-
-// apply
-char					*apply_width(char *s, t_options opts);
+int						print_string(t_segment *segment, bool is_bonus);
+char					*format_string(t_segment *segment);
 
 // free
 void					free_segment(void *segment_ptr);
@@ -107,6 +106,7 @@ void					free_segment(void *segment_ptr);
 size_t					ft_strlen(const char *s);
 size_t					ft_strlcat(char *dst, const char *src, size_t size);
 size_t					ft_strlcpy(char *dst, const char *src, size_t size);
+char					*ft_strdup(const char *s);
 int						ft_atoi(const char *nptr);
 
 // memory

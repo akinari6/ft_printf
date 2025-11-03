@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_options.c                                    :+:      :+:    :+:   */
+/*   format_character.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 11:23:57 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 13:23:50 by aktsuji          ###   ########.fr       */
+/*   Created: 2025/11/03 11:21:26 by aktsuji           #+#    #+#             */
+/*   Updated: 2025/11/03 14:04:45 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *apply_width(char *s, t_options opts)
+static char *apply_width(char *s, t_options opts)
 {
     char *new;
     int s_len;
@@ -27,13 +27,27 @@ char *apply_width(char *s, t_options opts)
         ft_strlcpy(new, s, opts.width + 1);
         ft_memset(new + s_len, ' ', opts.width - s_len);
     }
-    else if (opts.flag_zero)
-    {
-        ft_memset(new, '0', opts.width - s_len);
+    else
+	{
+		ft_memset(new, ' ', opts.width - s_len);
         new[opts.width - s_len] = '\0';
         ft_strlcat(new, s, opts.width);
-    }
+	}
     new[opts.width] = '\0';
     free(s);
     return new;
+}
+
+char	*format_character(t_segment *segment)
+{
+	char	*s;
+
+	s = malloc(2);
+	if (s == NULL)
+		return (NULL);
+	s[0] = segment->value.c;
+	s[1] = '\0';
+	if (segment->opts.width > 0)
+		s = apply_width(s, segment->opts);
+	return (s);
 }
