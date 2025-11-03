@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:42 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 12:06:31 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/03 12:41:30 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ int						write_and_count_str(char *str);
 int						write_and_count_char(char c);
 int						print_text(char *str);
 int						print_percent(void);
+
+// free
+void					free_segment(void *segment_ptr);
 
 // string
 size_t					ft_strlen(const char *s);
