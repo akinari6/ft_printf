@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 13:31:57 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 18:35:51 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 18:41:22 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*itoa_unsigned(long long l)
 	int			length;
 	char		*str;
 
-    length = 0;
+	length = 0;
 	if (l == 0)
 		return (ft_strdup("0"));
 	if (l < 0)
@@ -41,71 +41,72 @@ static char	*itoa_unsigned(long long l)
 	return (str);
 }
 
-
-static char get_pad_char(t_options opts)
+static char	get_pad_char(t_options opts)
 {
-    if (opts.flag_zero && opts.precision <= 0)
-        return '0';
-    return  ' ';
+	if (opts.flag_zero && opts.precision <= 0)
+		return ('0');
+	return (' ');
 }
 
-static char *create_padded_string(char *s, int pad_size, char pad_char, bool left)
+static char	*create_padded_string(char *s, int pad_size, char pad_char,
+		bool left)
 {
-    char    *pad;
-    char    *result;
+	char	*pad;
+	char	*result;
 
-    pad = malloc(pad_size + 1);
-    if (!pad)
-        return (NULL);
-    pad[pad_size] = '\0';
-    ft_memset(pad, pad_char, pad_size);
-    if (left)
-        result = ft_strjoin(pad, s);
-    else
-        result = ft_strjoin(s, pad);
-    free(pad);
-    return (result);
+	pad = malloc(pad_size + 1);
+	if (!pad)
+		return (NULL);
+	pad[pad_size] = '\0';
+	ft_memset(pad, pad_char, pad_size);
+	if (left)
+		result = ft_strjoin(pad, s);
+	else
+		result = ft_strjoin(s, pad);
+	free(pad);
+	return (result);
 }
 
-static char *join_and_free(char *s1, char *s2)
+static char	*join_and_free(char *s1, char *s2)
 {
-    char *result = ft_strjoin(s1, s2);
-    free(s1);
-    free(s2);
-    return (result);
+	char	*result;
+
+	result = ft_strjoin(s1, s2);
+	free(s1);
+	free(s2);
+	return (result);
 }
 
-static char *apply_sign_and_width(char *s, bool is_minus, t_options opts)
+static char	*apply_sign_and_width(char *s, bool is_minus, t_options opts)
 {
-    char    *sign;
-    char *tmp;
-    char    *result;
-    int     pad_size;
+	char	*sign;
+	char	*tmp;
+	char	*result;
+	int		pad_size;
 
-    sign = create_sign(is_minus, opts);
-    pad_size = opts.width - ft_strlen(s) - ft_strlen(sign);
-    if (pad_size <= 0)
-        return (join_and_free(sign, s));
-    
-    tmp = create_padded_string(s, pad_size, 
-                get_pad_char(opts), !opts.flag_minus);
-    if (tmp == NULL)
-    {
-        free(s);
-        free(sign);
-        return NULL;
-    }
-    result = ft_strjoin(sign, tmp);
-    free(sign);
-    free(tmp);
-    free(s);
-    return (result);
+	sign = create_sign(is_minus, opts);
+	pad_size = opts.width - ft_strlen(s) - ft_strlen(sign);
+	if (pad_size <= 0)
+		return (join_and_free(sign, s));
+	tmp = create_padded_string(s, pad_size, get_pad_char(opts),
+			!opts.flag_minus);
+	if (tmp == NULL)
+	{
+		free(s);
+		free(sign);
+		return (NULL);
+	}
+	result = ft_strjoin(sign, tmp);
+	free(sign);
+	free(tmp);
+	free(s);
+	return (result);
 }
 
 char	*format_int(t_segment *segment)
 {
-	char *s;
-	bool is_minus;
+	char	*s;
+	bool	is_minus;
 
 	is_minus = segment->value.i < 0;
 	s = itoa_unsigned(segment->value.i);

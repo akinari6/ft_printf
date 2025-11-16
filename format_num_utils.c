@@ -6,13 +6,13 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 17:25:49 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 18:19:53 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 18:39:39 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char 	*create_sign(bool is_minus, t_options opts)
+char	*create_sign(bool is_minus, t_options opts)
 {
 	if (is_minus)
 		return (ft_strdup("-"));
@@ -36,7 +36,7 @@ char	*apply_num_precision(char *s, t_options opts)
 	if (zero_pad == NULL)
 	{
 		free(s);
-		return NULL;
+		return (NULL);
 	}
 	ft_memset(zero_pad, '0', zero_pad_size);
 	zero_pad[zero_pad_size] = '\0';
