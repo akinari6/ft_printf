@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 20:34:51 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:26:37 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 17:59:55 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	extract_from_va_list(t_segment *segment, va_list ap)
 		segment->value.s = va_arg(ap, char *);
 	else if (type == TYPE_POINTER)
 		segment->value.ptr = va_arg(ap, void *);
-	else if (type == TYPE_INT || type == TYPE_UINT)
+	else if (type == TYPE_INT || type == TYPE_UINT || type == TYPE_IINT)
 		segment->value.i = va_arg(ap, long long);
 	else if (type == TYPE_HEX_LOWER || type == TYPE_HEX_UPPER)
 		segment->value.i = va_arg(ap, long long);

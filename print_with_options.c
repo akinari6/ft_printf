@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:23:21 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:24:53 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 17:49:36 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,25 @@ int	print_pointer(t_segment *segment, bool is_bonus)
 		return (length);
 	}
 	s = format_pointer(s, segment->opts);
+	if (s == NULL)
+		return (0);
+	length = write_and_count_str(s);
+	free(s);
+	return (length);
+}
+
+int	print_int(t_segment *segment, bool is_bonus)
+{
+	char *s;
+	int length;
+	if (!is_bonus)
+	{
+		s = ft_itoa(segment->value.i);
+		length = write_and_count_str(s);
+		free(s);
+		return (length);
+	}
+	s = format_int(segment);
 	if (s == NULL)
 		return (0);
 	length = write_and_count_str(s);

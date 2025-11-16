@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:02:00 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:29:11 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 17:55:54 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int	ft_printf(const char *format, ...)
 
 	va_start(ap, format);
 	segment_list = parse(format, ap);
-	// ft_lstiter(segment_list, print_full_segment); // for debug
-	total_length = output(segment_list, true);
+	ft_lstiter(segment_list, print_full_segment); // for debug
+	total_length = output(segment_list, false);
 	ft_lstclear(&segment_list, free_segment);
 	va_end(ap);
 	return (total_length);
@@ -92,9 +92,10 @@ int	main(void)
 {
 	int	a;
 
-	a = ft_printf("abcd|%-0+# 10.20c|123|%10.4s|ABC|%30p|+++|%d|@@@|%x|;;;|%%|\n", 'F',
-			"?????", "address", 10000000, 42);
-	printf("%d\n", a);
+	// a = ft_printf("abcd|%-0+# 10.20c|123|%10.4s|ABC|%30p|+++|%d|@@@|%x|;;;|%%|\n", 'F',
+	// 		"?????", "address", 10000000, 42);
+	int b = ft_printf("%d, %i, %u\n", -24, 42, 1000);
+	printf("%d, %d\n", a, b);
 }
 // abcd123ABC+++@@@
 // F
