@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:43:56 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:01:35 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 18:26:03 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ void	parse_options(void *segment_ptr)
 		(*segment).opts.width = ft_atoi(content + i);
 		while (content[i] != '\0' && ft_isdigit(content[i]))
 			i++;
-		i++;
-		(*segment).opts.precision = ft_atoi(content + i);
+		if (content[i] == '.')
+		{
+			i++;
+			if (content[i] != '\0')
+				(*segment).opts.precision = ft_atoi(content + i);
+		}
 		break ;
 	}
 }

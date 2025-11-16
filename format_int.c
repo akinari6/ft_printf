@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 13:31:57 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 17:49:09 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 18:35:51 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static char	*itoa_unsigned(long long l)
 	int			length;
 	char		*str;
 
+    length = 0;
 	if (l == 0)
 		return (ft_strdup("0"));
 	if (l < 0)
@@ -31,7 +32,7 @@ static char	*itoa_unsigned(long long l)
 	str = malloc(length + 1);
 	if (str == NULL)
 		return (str);
-	str[--length] = '\0';
+	str[length] = '\0';
 	while (l > 0)
 	{
 		str[--length] = '0' + l % 10;
@@ -58,12 +59,10 @@ static char *create_padded_string(char *s, int pad_size, char pad_char, bool lef
         return (NULL);
     pad[pad_size] = '\0';
     ft_memset(pad, pad_char, pad_size);
-    
     if (left)
         result = ft_strjoin(pad, s);
     else
         result = ft_strjoin(s, pad);
-    
     free(pad);
     return (result);
 }
@@ -79,6 +78,7 @@ static char *join_and_free(char *s1, char *s2)
 static char *apply_sign_and_width(char *s, bool is_minus, t_options opts)
 {
     char    *sign;
+    char *tmp;
     char    *result;
     int     pad_size;
 
@@ -87,21 +87,23 @@ static char *apply_sign_and_width(char *s, bool is_minus, t_options opts)
     if (pad_size <= 0)
         return (join_and_free(sign, s));
     
-    result = create_padded_string(s, pad_size, 
+    tmp = create_padded_string(s, pad_size, 
                 get_pad_char(opts), !opts.flag_minus);
-    if (!result)
-        return (free(sign), NULL);
-    
-    s = result;
-    result = ft_strjoin(sign, s);
+    if (tmp == NULL)
+    {
+        free(s);
+        free(sign);
+        return NULL;
+    }
+    result = ft_strjoin(sign, tmp);
     free(sign);
+    free(tmp);
     free(s);
     return (result);
 }
 
 char	*format_int(t_segment *segment)
 {
-	// 符号、精度を出した後に、widthから判断して文字列を作る
 	char *s;
 	bool is_minus;
 
