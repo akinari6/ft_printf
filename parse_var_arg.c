@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_var_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: akinari <akinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 20:34:51 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 20:04:05 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 23:28:25 by akinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,7 @@
 // 2. classify fmt_typ
 // 3. extract_value_from_va_list
 
-t_options	get_initial_options(void)
-{
-	t_options	opts;
-
-	opts.width = -1;
-	opts.precision = -1;
-	opts.flag_minus = false;
-	opts.flag_zero = false;
-	opts.flag_plus = false;
-	opts.flag_space = false;
-	opts.flag_hash = false;
-	return (opts);
-}
-
-t_format_type	classify_fmt_type(char *content)
+static t_format_type	classify_fmt_type(char *content)
 {
 	int	content_length;
 
@@ -39,28 +25,28 @@ t_format_type	classify_fmt_type(char *content)
 	return (content[content_length - 1]);
 }
 
-void	extract_from_va_list(t_segment *segment, va_list ap)
+static void	extract_from_va_list(t_segment *segment, va_list *ap)
 {
 	t_format_type	type;
 
 	type = segment->fmt_type;
 	if (type == TYPE_CHAR)
-		segment->value.c = va_arg(ap, int);
+		segment->value.c = va_arg(*ap, int);
 	else if (type == TYPE_STRING)
-		segment->value.s = va_arg(ap, char *);
+		segment->value.s = va_arg(*ap, char *);
 	else if (type == TYPE_POINTER)
-		segment->value.ptr = va_arg(ap, void *);
+		segment->value.ptr = va_arg(*ap, void *);
 	else if (type == TYPE_INT || type == TYPE_IINT)
-		segment->value.i = va_arg(ap, long long);
+		segment->value.i = va_arg(*ap, int);
 	else if (type == TYPE_UINT)
-		segment->value.i = va_arg(ap, unsigned long long);
+		segment->value.ui = va_arg(*ap, unsigned int);
 	else if (type == TYPE_HEX_LOWER || type == TYPE_HEX_UPPER)
-		segment->value.i = va_arg(ap, unsigned long long);
+		segment->value.i = va_arg(*ap, unsigned int);
 	else if (type == TYPE_PERCENT)
 		segment->value.c = '%';
 }
 
-t_list	*parse_var_args(t_list *segment_list, va_list ap)
+t_list	*parse_var_args(t_list *segment_list, va_list *ap)
 {
 	t_list		*node;
 	t_segment	*segment;
@@ -69,7 +55,6 @@ t_list	*parse_var_args(t_list *segment_list, va_list ap)
 	while (node != NULL)
 	{
 		segment = node->content;
-		segment->opts = get_initial_options();
 		if (segment->seg_type == SEG_FORMAT)
 		{
 			segment->fmt_type = classify_fmt_type(segment->content);

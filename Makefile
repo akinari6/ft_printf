@@ -7,7 +7,6 @@ SRCS = ft_printf.c \
        parse_split_segments.c \
        parse_create_list.c \
        parse_var_arg.c \
-       parse_options.c \
        output.c \
        print_plain.c \
        prints.c \
@@ -27,7 +26,8 @@ SRCS = ft_printf.c \
        ft_lstclear.c \
        ft_lstiter.c \
        ft_lstlast.c \
-       ft_lstnew.c 
+       ft_lstnew.c \
+       ft_lstdelone.c
 
 OBJS = $(SRCS:.c=.o)
 

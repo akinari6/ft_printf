@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_with_options.c                               :+:      :+:    :+:   */
+/*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akinari <akinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:23:21 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 22:17:11 by akinari          ###   ########.fr       */
+/*   Updated: 2025/11/16 23:37:46 by akinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int print_char(t_segment *segment)
+{
+	return (write_and_count_char(segment->value.c));
+}
 
 int	print_string(t_segment *segment)
 {
@@ -47,12 +52,36 @@ int	print_int(t_segment *segment)
 	return (length);
 }
 
+int	print_uint(t_segment *segment)
+{
+	char	*s;
+	int		length;
+
+	s = ft_uitoa(segment->value.ui);
+	if (s == NULL)
+		return 0;
+	length = write_and_count_str(s);
+	free(s);
+	return (length);
+}
+
 int	print_hex(t_segment *segment)
 {
 	char *s;
 	int length;
 
 	s = decimal_to_hex(segment->value.i);
+	length = write_and_count_str(s);
+	free(s);
+	return (length);
+}
+
+int	print_large_hex(t_segment *segment)
+{
+	char *s;
+	int length;
+
+	s = decimal_to_large_hex(segment->value.i);
 	length = write_and_count_str(s);
 	free(s);
 	return (length);
