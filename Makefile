@@ -60,9 +60,4 @@ fclean: clean
 
 re: fclean all
 
-# テスト用（オプション）
-test: $(NAME)
-	$(CC) $(CFLAGS) test.c $(NAME) -o test_printf
-	./test_printf
-
 .PHONY: all clean fclean re test
