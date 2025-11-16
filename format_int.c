@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 13:31:57 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 19:03:54 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:29:22 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,19 @@ static char	*apply_sign_and_width(char *s, bool is_minus, t_options opts)
 	pad_size = opts.width - ft_strlen(s) - ft_strlen(sign);
 	if (pad_size <= 0)
 		return (join_and_free(sign, s));
-	tmp = create_padded_string(s, pad_size, get_pad_char(opts),
-			!opts.flag_minus);
-	if (tmp == NULL)
-	{
-		free(s);
-		free(sign);
-		return (NULL);
-	}
-	result = ft_strjoin(sign, tmp);
-	free(sign);
-	free(tmp);
-	free(s);
+	if (opts.flag_zero && !opts.flag_minus)
+    {
+        tmp = create_padded_string(s, pad_size, '0', true);
+        result = ft_strjoin(sign, tmp);
+    }
+    else
+    {
+        tmp = ft_strjoin(sign, s);
+        result = create_padded_string(tmp, pad_size, ' ', !opts.flag_minus);
+    }
+    free(s);
+    free(tmp);
+    free(sign);
 	return (result);
 }
 
