@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:42 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 18:00:05 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 18:46:05 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int					print_pointer(t_segment *segment, bool is_bonus);
 char				*format_pointer(char *s, t_options opts);
 int					print_int(t_segment *segment, bool is_bonus);
 char				*format_int(t_segment *segment);
+int	print_hex(t_segment *segment, bool is_large, bool is_bonus);
+char *format_hex(t_segment *segment, bool is_large);
 
 char				*apply_num_precision(char *s, t_options opts);
 char				*create_sign(bool is_minus, t_options opts);

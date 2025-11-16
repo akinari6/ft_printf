@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 21:35:30 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 18:00:45 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 18:46:35 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static int	print_segment_content(t_segment *segment, bool is_bonus)
 		return (print_pointer(segment, is_bonus));
 	else if (type == TYPE_INT || type == TYPE_UINT || type == TYPE_IINT)
 		return (print_int(segment, is_bonus));
-	// else if (type == TYPE_HEX_LOWER)
-	// 	return (print_hex_lower(segment, is_bonus));
-	// else if (type == TYPE_HEX_UPPER)
-	// 	return (print_hex_upper(segment, is_bonus));
+	else if (type == TYPE_HEX_LOWER)
+		return (print_hex(segment, false, is_bonus));
+	else if (type == TYPE_HEX_UPPER)
+		return (print_hex(segment, true, is_bonus));
 	return (0);
 }
 

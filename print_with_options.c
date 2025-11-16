@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:23:21 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 18:39:08 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 18:44:09 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,20 @@ int	print_int(t_segment *segment, bool is_bonus)
 
 int	print_hex(t_segment *segment, bool is_large, bool is_bonus)
 {
+	char *s;
+	int length;
+
+	if (!is_bonus)
+	{
+		s = decimal_to_hex(segment->value.i);
+		length = write_and_count_str(s);
+		free(s);
+		return (length);
+	}
+	s = format_hex(segment, is_large);
+	if (s == NULL)
+		return 0;
+	length = write_and_count_str(s);
+	free(s);
+	return (length);
 }
