@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:02:00 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 19:29:42 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:36:44 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,19 @@ int	ft_printf(const char *format, ...)
 	return (total_length);
 }
 
-int	main(void)
-{
-	int	 a = 0;
+// int	main(void)
+// {
+// 	int	 a = 0;
 
-	// a = ft_printf("abcd|%-0+# 10.20c|123|%10.4s|ABC|%30p|+++|%d|@@@|%x|;;;|%%|\n", 'F',
-	// 		"?????", "address", 10000000, 42);
-	int b = ft_printf("|%+012d|\n", 24);
-	int c = ft_printf("|%#010x|, |%X|\n", 0x1234, 0x12434);
-	ft_printf("|%#10.8x|\n", 0x1234);
-	printf("|%-#10.8x|\n", 0x1234);
-	// printf("%d, %d\n", a, b);
-	printf("%d\n", c);
-}
+// 	// a = ft_printf("abcd|%-0+# 10.20c|123|%10.4s|ABC|%30p|+++|%d|@@@|%x|;;;|%%|\n", 'F',
+// 	// 		"?????", "address", 10000000, 42);
+// 	int b = ft_printf("|%+012d|\n", 24);
+// 	int c = ft_printf("|%#010x|, |%X|\n", 0x1234, 0x12434);
+// 	ft_printf("|%#10.8x|\n", 0x1234);
+// 	printf("|%-#10.8x|\n", 0x1234);
+// 	// printf("%d, %d\n", a, b);
+// 	printf("%d\n", c);
+// }
 // abcd123ABC+++@@@
 // F
 // abcdF         123ABC+++@@@

@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:00:45 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:27:51 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:40:51 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ static size_t	count_segments(const char *format)
 {
 	int		i;
 	size_t	count;
-	bool	in_format;
 
 	i = 0;
 	count = 0;
-	in_format = false;
 	while (format[i] != '\0')
 	{
 		if (format[i] == PERCENT)
@@ -72,8 +70,8 @@ static char	*extract_segment(const char *format, int *idx)
 	}
 	else
 	{
-		while (format[*idx + length] != '\0'
-			&& format[*idx + length] != PERCENT)
+		while (format[*idx + length] != '\0' && format[*idx
+			+ length] != PERCENT)
 			length++;
 	}
 	segment = malloc(length + 1);
@@ -103,8 +101,7 @@ char	**split_format_to_segments(const char *format)
 	char	**segments;
 	size_t	segment_count;
 	int		format_index;
-	int		segment_index;
-	int		length;
+	size_t	segment_index;
 
 	segment_count = count_segments(format);
 	segments = malloc(sizeof(char *) * (segment_count + 1));

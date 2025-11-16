@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:07:09 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 18:41:45 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:44:33 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,5 @@ char	*format_pointer(char *s, t_options opts)
 	if (opts.flag_plus || opts.flag_space)
 		new = apply_sign(new, opts);
 	new = apply_width_normal(new, opts);
-	if (new != NULL && opts.width > 0)
-		return (new);
+	return (new);
 }

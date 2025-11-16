@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:21:26 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:23:54 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:41:05 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static char	*apply_width(char *s, t_options opts)
 {
 	char	*new;
 	int		s_len;
-	int		i;
 
 	s_len = ft_strlen(s);
 	if (s_len >= opts.width)

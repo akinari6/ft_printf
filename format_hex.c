@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:44:24 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 19:26:23 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:45:59 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,10 @@ static char	*create_padded_string(char *s, int pad_size, char pad_char,
 	return (result);
 }
 
-static char	get_pad_char(t_options opts)
-{
-	if (opts.flag_zero && !opts.flag_minus)
-		return ('0');
-	return (' ');
-}
-
 static char	*apply_prefix_and_width(char *s, char *prefix, t_options opts)
 {
 	char	*applied;
-	char	*pad;
 	char	*tmp;
-	char	*result;
 	int		pad_size;
 
 	pad_size = opts.width - ft_strlen(s) - ft_strlen(prefix);
@@ -81,8 +72,8 @@ static char	*apply_prefix_and_width(char *s, char *prefix, t_options opts)
 
 char	*format_hex(t_segment *segment, bool is_large)
 {
-	char *s;
-	char *prefix;
+	char	*s;
+	char	*prefix;
 
 	s = decimal_to_hex(segment->value.i);
 	if (s == NULL)
@@ -93,9 +84,9 @@ char	*format_hex(t_segment *segment, bool is_large)
 		free(s);
 		return (NULL);
 	}
-    s = apply_num_precision(s, segment->opts);
-    if (s == NULL)
-        return NULL;
+	s = apply_num_precision(s, segment->opts);
+	if (s == NULL)
+		return (NULL);
 	s = apply_prefix_and_width(s, prefix, segment->opts);
 	return (s);
 }

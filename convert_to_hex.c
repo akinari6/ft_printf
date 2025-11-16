@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:48:16 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/03 16:24:24 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:46:25 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ char	*pointer_to_hex(void *ptr)
 char	*decimal_to_hex(int number)
 {
 	const char	hex_base[] = "0123456789abcdef";
-	long long	ll;
 	int			buffer_size;
 	char		*hex;
 
