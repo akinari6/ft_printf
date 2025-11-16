@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: akinari <akinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:42 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 18:46:05 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 22:23:30 by akinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,21 @@ t_list				*parse_var_args(t_list *segment_list, va_list ap);
 void				parse_options(void *segment_ptr);
 
 // output
-int					output(t_list *segment_list, bool is_bonus);
+int					output(t_list *segment_list);
 int					write_and_count_str(char *str);
 int					write_and_count_char(char c);
 
 int					print_text(char *str);
 int					print_percent(void);
 
-int					print_character(t_segment *segment, bool is_bonus);
-char				*format_character(t_segment *segment);
-int					print_string(t_segment *segment, bool is_bonus);
+int					print_string(t_segment *segment);
 char				*format_string(t_segment *segment);
-int					print_pointer(t_segment *segment, bool is_bonus);
+int					print_pointer(t_segment *segment);
 char				*format_pointer(char *s, t_options opts);
-int					print_int(t_segment *segment, bool is_bonus);
+int					print_int(t_segment *segment);
 char				*format_int(t_segment *segment);
-int	print_hex(t_segment *segment, bool is_large, bool is_bonus);
-char *format_hex(t_segment *segment, bool is_large);
+int	print_hex(t_segment *segment);
+char *format_hex(t_segment *segment);
 
 char				*apply_num_precision(char *s, t_options opts);
 char				*create_sign(bool is_minus, t_options opts);
@@ -113,9 +111,7 @@ void				free_segment(void *segment_ptr);
 
 // string
 size_t				ft_strlen(const char *s);
-size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
-char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strdup(const char *s);
 char				*ft_itoa(int n);
 int						ft_atoi(const char *nptr);
@@ -123,9 +119,6 @@ int						ft_atoi(const char *nptr);
 // convert
 char				*pointer_to_hex(void *ptr);
 char				*decimal_to_hex(int number);
-
-// memory
-void				*ft_memset(void *s, int c, size_t n);
 
 // char type
 int					ft_isdigit(int c);
@@ -137,14 +130,10 @@ void				ft_putnbr_fd(int n, int fd);
 
 // list
 t_list				*ft_lstnew(void *content);
-void				ft_lstadd_front(t_list **lst, t_list *new);
-int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
-void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
+void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-						void (*del)(void *));
 
 #endif

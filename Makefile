@@ -10,37 +10,24 @@ SRCS = ft_printf.c \
        parse_options.c \
        output.c \
        print_plain.c \
-       print_with_options.c \
-       format_character.c \
-       format_string.c \
-       format_pointer.c \
-       format_int.c \
-       format_hex.c \
-       format_num_utils.c \
+       prints.c \
        convert_to_hex.c \
        write_and_count.c \
        free.c \
        ft_atoi.c \
        ft_isdigit.c \
        ft_itoa.c \
-       ft_memset.c \
        ft_putchar_fd.c \
        ft_putnbr_fd.c \
        ft_putstr_fd.c \
        ft_strdup.c \
-       ft_strjoin.c \
-       ft_strlcat.c \
        ft_strlcpy.c \
        ft_strlen.c \
        ft_lstadd_back.c \
-       ft_lstadd_front.c \
        ft_lstclear.c \
-       ft_lstdelone.c \
        ft_lstiter.c \
        ft_lstlast.c \
-       ft_lstmap.c \
-       ft_lstnew.c \
-       ft_lstsize.c
+       ft_lstnew.c 
 
 OBJS = $(SRCS:.c=.o)
 
