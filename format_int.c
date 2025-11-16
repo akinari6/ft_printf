@@ -6,7 +6,7 @@
 /*   By: aktsuji <aktsuji@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 13:31:57 by aktsuji           #+#    #+#             */
-/*   Updated: 2025/11/16 18:41:22 by aktsuji          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:03:54 by aktsuji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*itoa_unsigned(long long l)
 
 static char	get_pad_char(t_options opts)
 {
-	if (opts.flag_zero && opts.precision <= 0)
+	if (opts.flag_zero && opts.precision <= 0 && !opts.flag_minus)
 		return ('0');
 	return (' ');
 }
